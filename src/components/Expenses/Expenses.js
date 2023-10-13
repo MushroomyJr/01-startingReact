@@ -7,6 +7,7 @@ const Expenses = (props) => {
   const [pickedYear, setPickedYear] = useState("");
   const yearFilter = (yearChosen) => {
     console.log("expense.js");
+    console.log(pickedYear)
     setPickedYear(yearChosen);
   };
   return (
