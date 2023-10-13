@@ -30,11 +30,12 @@ const ExpenseForm = () => {
     console.log(expenseData);
   };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input type="text" value={setEnteredTitle("")}
+          onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -42,6 +43,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
+            value={setEnteredAmount("")}
             onChange={amountChangeHandler}
           />
         </div>
