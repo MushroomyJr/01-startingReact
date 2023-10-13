@@ -37,6 +37,10 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
+
+          <input type="text" value={setEnteredTitle("")}
+          onChange={titleChangeHandler} />
+
           <input
             type="text"
             value={enteredTtile}
