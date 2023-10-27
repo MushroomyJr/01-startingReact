@@ -1,6 +1,8 @@
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
+import { useState } from "react";
 const NewExpense = (props) => {
+  const [formState, setFormState] = useState(false);
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -8,10 +10,22 @@ const NewExpense = (props) => {
     };
     console.log(expenseData);
     props.onAddExpense(expenseData);
+    formSwitchHandler();
+  };
+  const formSwitchHandler = () => {
+    setFormState((prevState) => {
+      return !prevState;
+    });
   };
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {!formState && <button onClick={formSwitchHandler}>add expense</button>}
+      {formState && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          formSwitch={formSwitchHandler}
+        />
+      )}
     </div>
   );
 };
